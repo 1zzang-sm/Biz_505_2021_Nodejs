@@ -1,0 +1,16 @@
+
+table {
+	border-spacing: 50px;
+	text-align:center;
+	line-height: 1.5;
+	margin: 20px 10px;
+}
+table td {
+	
+	border: 3px solid white;
+	padding: 30px;
+	margin: 10px auto;
+	background-color:skyblue;
+	
+}
+

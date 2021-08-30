@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST">
+    <input type="hidden" id="b_id" name="b_id" />
+    <div><label>작성자</label><input name="b_writer" id="b_writer" type="text"></div>
+    <div><label>작성일자</label><input name="b_date" id="b_date" type="text"></div>
+    <div><label>작성시각</label><input name="b_time" id="b_time" type="text"></div>
+    <div><label>제목</label><input name="b_subject" id="b_subject" type="text"></div>
+    <div><label>내용</label><textarea id="b_text" name="b_text" type="text"></textarea></div>
+    <button class="btn_update">수정하기</button>
+</form>
+</body>
+<script>
+    let b_id = document.getElementById("b_id")
+    document.querySelector(".btn_update")
+    .addEventListener("click", ()=>{
+        document.location.href = "/bbs/update?=b_id" + b_id
+    })
+</script>
+</html>

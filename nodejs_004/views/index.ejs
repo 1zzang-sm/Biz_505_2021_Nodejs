@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>나의 게시판</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>나의 게시판</h1>
+    <table>
+      <tr>
+        <th>NO</td>
+        <th>작성일자</td>
+        <th>작성자</td>
+        <th>제목</td>
+        <th>조회수</td>
+      </tr>
+      <% BBS.forEach( (vo,index) => { %>
+        <tr data-seq="<%- vo.b_id %>">
+          <td class="items"><%- index %></td>
+          <td class="items"><%- vo.b_date %></td>
+          <td class="items"><%- vo.b_time %></td>
+          <td class="items"><%- vo.b_subject %></td>
+          <td class="items"><%- vo.b_count %></td>
+        </tr>
+      <% }) %>
+    </table>
+    <button class="btn_write">글쓰기</button>
+  </body>
+  <script>
+    document.querySelector("button.btn_write")
+    .addEventListener("click", ()=>{
+      document.location.href = "/bbs/write"
+    })
+    document.querySelector(".items").addEventListener("click", ()=>{
+      document.location.href = "/bbs/update"
+    })
+  </script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link rel='stylesheet' href='/css/main.css' />
+	<link rel='stylesheet' href='/css/footer.css' />
+	<link rel='stylesheet' href='/css/header.css' />
+    <title>김밥나라 POSS</title>
+  </head>
+  <body>
+	  <header>
+		  <h1>WELCOME MY RESTORANT POSS</h1>
+	  </header>
+	  <div class="report">
+		  <h3>식사중인 테이블 : </h3>
+		  <h3>잔여 좌석 : </h3>
+		  <h3>대기중인 팀 수 : </h3>
+	  </div>
+<section class="mytable">
+	<table class="report">
+		<tr>
+			<td data-id="1">01</td>
+			<td data-id="2">02</td>
+			<td data-id="3">03</td>
+			<td data-id="4">04</td>
+			<td data-id="5">05</td>
+			<td data-id="6">06</td>
+			<td data-id="7">07</td>
+			<td data-id="8">08</td>
+			<td data-id="9">09</td>
+		</tr>
+		<tr>
+			<td data-id="10">10</td>
+			<td data-id="11">11</td>
+			<td data-id="12">12</td>
+			<td data-id="13">13</td>
+			<td data-id="14">14</td>
+			<td data-id="15">15</td>
+			<td data-id="16">16</td>
+			<td data-id="17">17</td>
+			<td data-id="18">18</td>
+		</tr>
+		<tr>
+			<td data-id="19">19</td>
+			<td data-id="20">20</td>
+			<td data-id="21">21</td>
+			<td data-id="22">22</td>
+			<td data-id="23">23</td>
+			<td data-id="24">24</td>
+			<td data-id="25">25</td>
+			<td data-id="26">26</td>
+			<td data-id="27">27</td>
+		</tr>
+		<tr>
+			<td data-id="28">28</td>
+			<td data-id="29">29</td>
+			<td data-id="30">30</td>
+			<td data-id="31">31</td>
+			<td data-id="32">32</td>
+			<td data-id="33">33</td>
+			<td data-id="34">34</td>
+			<td data-id="35">35</td>
+			<td data-id="36">36</td>
+		</tr>
+	</table>
+</section>
+<!-- <section class="wait">
+	준비중...
+</section> -->
+<footer>
+	CopyRight &copy; captain1152@naver.com | 서울특별시 해운대구 행복동 왕십리 79 | 대표 : 단무지셀프
+</footer>
+  </body>
+  <script>
+	  let s1 = []
+
+	  document.querySelector("table.report").addEventListener("click", (e)=>{
+		const td = e.target
+		// alert(td.tagName)
+		// alert(td.dataset.id)
+		if(td.tagName === "TD") {
+			const tr = td.closest("TR")
+			const data = td.dataset.id
+			document.location.href = `/poss?data=${data}`
+		}
+	  })
+  </script>
+</html>

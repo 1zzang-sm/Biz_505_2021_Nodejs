@@ -1,0 +1,58 @@
+const fontNames = [
+    "돋움체",
+    "맑은고딕",
+    "궁서",
+    "굴림",
+    "바탕체",
+    "Arial",
+    "Arial Black",
+    "Comic Sans MS",
+    "Courier New",
+];
+const fontSizes = [
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "14",
+    "16",
+    "18",
+    "20",
+    "22",
+    "24",
+    "26",
+    "28",
+    "30",
+    "34",
+    "38",
+    "40",
+    "44",
+    "48",
+    "50",
+    "60",
+    "72",
+    "86",
+    "100",
+]
+const toolbar = [
+        "fontname",
+        "fontsize",
+        "style",
+        "color",
+        "table",
+        "height",
+        ["para",["ul", "ol"]],
+        ["view",["fullscreen","help"]],
+        ["insert",["link"]]
+    ]
+
+$("#b_text").summernote({
+    lang : "ko-KR",
+    toolbar,
+    fontNames : fontNames,
+    fontSizes : fontSizes,
+    placeholder : "본문을 입력하세요.",
+    width: "90%",
+    height: "300px",
+})
