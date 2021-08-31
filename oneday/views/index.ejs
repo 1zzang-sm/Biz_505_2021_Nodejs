@@ -7,7 +7,7 @@
     <title>김밥나라 POSS</title>
   </head>
   <body>
-	  <header>
+	  <header class="root">
 		  <h1>WELCOME MY RESTORANT POSS</h1>
 	  </header>
 	  <div class="report">
@@ -15,8 +15,15 @@
 		  <h3>잔여 좌석 : </h3>
 		  <h3>대기중인 팀 수 : </h3>
 	  </div>
+	  <!--
+	  <% PDT.forEach( (vo, index )=>{ %>
+		<input type="hidden" id="test" name="<%- vo.p_code %>" value="<%- vo.p_code %>" />
+		<% }) %>
+		-->
+
 <section class="mytable">
 	<table class="report">
+		
 		<tr>
 			<td data-id="1">01</td>
 			<td data-id="2">02</td>
@@ -63,6 +70,7 @@
 		</tr>
 	</table>
 </section>
+
 <!-- <section class="wait">
 	준비중...
 </section> -->
@@ -71,7 +79,6 @@
 </footer>
   </body>
   <script>
-	  let s1 = []
 
 	  document.querySelector("table.report").addEventListener("click", (e)=>{
 		const td = e.target
@@ -82,6 +89,9 @@
 			const data = td.dataset.id
 			document.location.href = `/poss?data=${data}`
 		}
+	  })
+	  document.querySelector("header.root").addEventListener("click", (e)=>{
+		  document.location.href = "/"
 	  })
   </script>
 </html>

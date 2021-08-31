@@ -15,7 +15,7 @@
 	}
 	.main {
 		width: 100%;
-		height:700px;
+		height:600px;
 	}
 	.left {
 		width:35%;
@@ -62,7 +62,7 @@
 	}
 </style>
 <body>
-	<header>
+	<header class="root">
 		<h1>WELCOME MY RESTORANT POSS</h1>
 	</header>
 <div class="main">
@@ -76,14 +76,12 @@
 			<th>금액</th>
 		</tr>
 		<!-- foreach로 할예정-->
-
 		<tr>
-			<td><%- PDT.p_name %></td>
-			<td><%- PDT.p_price %></td>
-			<td></td>
-			<td></td>
+			<td class="name"></td>
+			<td class="price"></td>
+			<td class="set"></td>
+			<td class="sum"></td>
 		</tr>
-
 		<tr>
 			<td>합계</td>
 			<td></td>
@@ -91,13 +89,14 @@
 			<td></td>
 		</tr>
 	</table>
-	<button>결제하기</button>
+	<input class="test" value>
+	<button class="cash">결제하기</button>
 </div>
 	<div class="right">
 		<table class="pro_list">
 			<% PDT.forEach((vo, index)=>{ %>
 			<tr data-id="<%- vo.p_code %>">
-				<td><%- vo.p_name %></td>
+				<td><%- vo.p_name %> - <%- vo.p_price %>원</td>
 			</tr>
 			<% }) %>
 		</table>
@@ -106,7 +105,7 @@
 <footer>
 	CopyRight &copy; captain1152@naver.com | 서울특별시 해운대구 행복동 왕십리 79 | 대표 : 단무지셀프
 </footer>
-<section class="modal">
+<section class="modal" style="display:none;">
 	<div class="main">
 		<h1><%- data %> 테이블 결제</h1>
 		<h3><%- PDT.p_name %></h3>
@@ -114,23 +113,32 @@
 </section>
 </body>
 <script>
-	let name = document.querySelector(".name")
+	let name = document.querySelector("td.name")
 	let price = document.querySelector("td.price")
-	let set = document.querySelector(".set")
-	let sum = document.querySelector(".sum")
-	
+	let set = document.querySelector("td.set")
+	let sum = document.querySelector("td.sum")
+	let test = document.querySelector("input.test")
+
 	document.querySelector("table.pro_list").addEventListener("click", (e)=>{
 		const td = e.target;
-		//alert(td.tagName);
+		 alert(td.tagName);
 		if(td.tagName === "TD") {
 			const tr = td.closest("TR")
 			const p_code = tr.dataset.id;
 			
-			
+			test.value = `<%- PDT.p_code %>`
 			
 			}
 
 	})
+	document.querySelector("button.cash").addEventListener("click", (e)=>{
+		test.value = `<%- data %>`
+	})
+	
+
+	document.querySelector("header.root").addEventListener("click", (e)=>{
+		  document.location.href = "/"
+	  })
 	
 </script>
 

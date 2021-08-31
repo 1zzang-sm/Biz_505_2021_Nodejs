@@ -1,0 +1,110 @@
+extends layout
+
+block content
+    div.intro
+        h1 김밥나라 POS
+        p START
+    div#webgl
+        canvas#reveal-effect
+    div#css
+    div.modal
+        .order
+            h1.table_name
+            table.order_list
+                tr
+                    th 품목
+                    th 단가
+                    th 수량
+                    th 금액
+            .total
+            .payments
+                .orders 주문하기
+                .payment 결제하기
+        .product_list
+            each vo,index in PRODUCT
+                div.p_code(data-id= vo.p_code)
+                    div.p_name= vo.p_name
+                    div.p_price= vo.p_price
+        .modal_close X
+    .modal_overlay
+            
+
+    script.
+        const modal = document.querySelector(".modal");
+        const modalOverlay = document.querySelector(".modal_overlay")
+        const modalClose = document.querySelector(".modal_close");
+        const order_list = document.querySelector(".order_list");
+        const product_list = document.querySelector(".product_list");
+        let table_name = document.querySelector("h1.table_name")
+
+        document.querySelector("#css").addEventListener("click",(e)=>{
+            const target_table = e.target;
+            const className = target_table.className;
+            if(className == "table" || className == "name"){
+                let table_id;
+                if(className == "table") {
+                    table_id = target_table.dataset.id;
+                } else {
+                    table_id = target_table.parentNode.dataset.id;
+                }
+                modalOverlay.classList.add("modal_overlay2")
+                modal.classList.add("modal_show")
+                table_name.innerHTML = `${table_id} 번 테이블`;
+
+            }
+        })
+
+        modalClose.addEventListener("click",() => {
+            modal.classList.remove("modal_show")
+            modalOverlay.classList.remove("modal_overlay2")       
+        })
+
+        product_list.addEventListener("click",(e)=>{
+            const className = e.target.className;
+            if(className === "p_name" || className === "p_price") {
+                const p_code = e.target.parentNode.dataset.id
+                const list = order_list.childNodes;
+                for(let i = 0; i < list.length; i++){
+                    if(list[i].className == p_code) {
+                        let innerCount = list[i].childNodes[2].innerText
+                        let innerPrice = list[i].childNodes[3].innerText
+                        list[i].childNodes[2].innerHTML = Number(innerCount) + 1
+                        list[i].childNodes[3].innerHTML = Number(innerPrice) * 2
+                        return false;
+                    }
+                }
+
+                fetch(`/orders/select?p_code=${p_code}`)
+                .then(res=>res.json())
+                .then(result=> {
+                    addOrder(
+                        result.ORDERS.p_code,
+                        result.ORDERS.p_name,
+                        result.ORDERS.p_price)
+                })
+            }
+        })
+
+        function addOrder(p_code,p_name,p_price){
+            const tr = document.createElement("tr");
+            tr.className = p_code;
+
+            const td_pname = document.createElement("td");
+            td_pname.textContent = p_name;
+            tr.appendChild(td_pname);
+
+            const td_price = document.createElement("td");
+            td_price.textContent = p_price;
+            tr.appendChild(td_price);
+
+            const td_count = document.createElement("td");
+            td_count.textContent = "1";
+            tr.appendChild(td_count);
+
+            const td_total = document.createElement("td");
+            td_total.textContent = p_price;
+            tr.appendChild(td_total);
+
+            order_list.appendChild(tr);
+        }
+
