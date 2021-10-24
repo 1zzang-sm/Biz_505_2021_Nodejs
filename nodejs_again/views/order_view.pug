@@ -1,0 +1,42 @@
+extends layout
+block content
+	script(src="/js/table.js")
+	style.
+		section.main {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+		}
+		article {
+			border: 1px solid green;
+			margin: 10px;
+			padding: 10px;
+			background-color: #ddd;
+			height: 90%;
+		}
+		article.order_list {
+			flex:2;
+		}
+		article.product_list {
+			flex: 3;
+			display: flex;
+			flex-wrap: wrap;
+		}
+		article.order_list h1 {
+			background-color: #333;
+			color: white;
+			text-align:center;
+		}
+		article.product_list div.menu {
+			width: 100px;
+			margin: 5px;
+			border: 1px solid black;
+			font-weight: bold;
+		}
+	article.order_list
+		h1 !{table_id}번 PC 주문목록
+	article.product_list
+		- for(let i = 0; i < 14; i++)
+			div.menu(data-menu_id= i+1) !{i+1}번 메뉴
+		

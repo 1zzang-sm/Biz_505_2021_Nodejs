@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Today Picture</title>
+	<link rel="stylesheet" href="css/header.css"/>
+	<link rel="stylesheet" href="css/picture.css"/>
+  </head>
+  <style>
+	  #ment2 {
+		  display: none;
+	  }
+  </style>
+  <body>
+   <!-- 추가 코드는 div.wrapper 안에서 작업하시면 됩니다-->
+   <div class="wrapper">
+	<header>
+		<a href="index.html" onclick="return false">
+			<div class="logo"></div>
+		</a>
+		<ul class="menu">
+			<li class="constellation"><a href="#constellation" onclick="return false">별자리</a></li>
+			<li class="solarsytem"><a href="#solarsytem" onclick="return false">태양계</a</li>
+			<li class="observatory"><a href="#observatory" onclick="return false">천문대</a</li>
+			<li class="gallery"><a href="#gallery" onclick="return false">갤러리</a</li>
+			<li class="calendar"><a href="#calendar" onclick="return false">캘린더</a</li>
+			<li class="today"><a href="#today" onclick="return false">오늘의 사진</a</li>
+			<li class="quiz"><a href="#quiz" onclick="return false">퀴즈</a></li>
+		</ul>
+	</header>
+
+	<div class="container">
+		<div id="title"></div>
+		<div id="date"></div>
+		<div id="content"></div>
+		<div id="today_img"></div>
+	</div>
+	<div class="help2">
+		<div>
+			이것은 나사에서 제공합니다.</br>
+			매일 새로운 사진과 정보가 업데이트 됩니다.</br>
+			클릭하면 사라집니다.
+		</div>
+	</div>
+	<div class="help" >
+		<div id="ment1">
+			Help
+		</div>
+		<div id="ment2">
+			ClickMe!
+		</div>
+	</div>
+</div>
+</body>
+<script>
+let searchButton = document.querySelector(".today")
+let help = document.querySelector(".help")
+let help2 = document.querySelector(".help2")
+searchButton.addEventListener("click", ()=>{
+	console.log("button pressed")
+	sendApiRequest()
+})
+
+async function sendApiRequest() {
+	let API_KEY = "bYWvMJN0df54mST3B70IwVG2kHezT1hySqVs0DvN"
+	let response = await fetch(
+			`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`);
+	console.log(response)
+	let data = await response.json()
+	console.log(data)
+	useApiData(data)
+}
+
+function useApiData(data) {
+	document.querySelector("#title").innerHTML += data.title
+	document.querySelector("#date").innerHTML += data.date
+	document.querySelector("#content").innerHTML += data.explanation
+	document.querySelector("#today_img").innerHTML += `<img src="${data.url}">`
+}
+	help.addEventListener("mouseover", ()=>{
+		help.style.width = "100px"
+})
+	help.addEventListener("mouseout", ()=>{
+		help.style.width = "50px"
+	})
+	help.addEventListener("click",()=>{
+		help2.style.opacity = "1"
+		help.style.opacity = "0"
+	})
+	help2.addEventListener("click", ()=>{
+		help.style.opacity = "1"
+		help2.style.opacity = "0"
+	})
+
+	help.addEventListener("mouseover", ()=>{
+		document.getElementById('ment1').style.display = "none"
+		document.getElementById('ment2').style.display = "block"
+	})
+	help.addEventListener("mouseout",()=>{
+		document.getElementById('ment1').style.display = "block"
+		document.getElementById('ment2').style.display = "none"
+	})
+	
+</script>
+</html>

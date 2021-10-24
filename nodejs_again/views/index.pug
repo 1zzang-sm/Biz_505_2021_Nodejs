@@ -1,0 +1,23 @@
+extends layout
+
+block content
+	script(src="/js/table.js")
+	style.
+		div.table {
+			width: 200px;
+			height: 100px;
+			border: 1px solid gray;
+			margin: 10px;
+			text-align: center;
+			background-color: white;
+			color: black;
+			font-weight: bold;
+			font-size: 20px;
+			cursor: pointer;
+		}
+		div.table:hover {
+			box-shadow: 2px 2px 2px gray;
+		}
+	- for(let i = 0; i < 24; i++)
+		div.table(data-table_id= i+1) !{i+1}번 pc
+		

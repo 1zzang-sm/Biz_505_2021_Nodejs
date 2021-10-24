@@ -14,3 +14,7 @@ select * from tbl_bbs;
 DESC tbl_replies;
 drop table tbl_bbs;
 drop table tbl_replies;
+
+drop database again;
+use mydb;
+

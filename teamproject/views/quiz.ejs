@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/header.css"/>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">	
+</head>
+<style>
+@import url("https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap");
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+.main_container {
+	width: 100%;
+	height: 100%;
+	font-family: "Vibur", cursive;
+}
+.container {
+	height: 100vh;
+	background-color:transparent;
+	/* border: 1px solid blue; */
+}
+.none {
+	/* display: none; */
+}
+.page_1 {
+	font-size:40px;
+	color: white;
+	display: flex;
+	text-align: center;
+	justify-content:center;
+	align-items: center;
+}
+.page_2 {
+	color:white;
+	display: flex;
+	text-align: center;
+	justify-content:center;
+	align-items: center;
+	/* display:none; */
+}
+.page_3 {
+	font-size:30px;
+	color: white;
+	text-align:center;
+	display:grid;
+	grid-template-columns:3;
+	grid-template-rows: 300px;
+	/* display:none; */
+}
+.page_3 .ele1 {
+	grid-column-start: 1 / -1;
+}
+.page_3 .ele2 {
+	grid-column-start:1 / 2;
+}
+.page_3 .ele3 {
+	grid-column-start:1/-1;
+}
+.page_4 {
+	/* display:none; */
+}
+fieldset {
+	height:50vh;
+	border:1px solid white;
+}
+fieldset legend {
+	font-size: 30px;
+	color: yellow;
+}
+
+.bounce {
+	font-size:40px;
+	-webkit-animation: bounce 1s infinite;
+	animation: bounce 1s infinite;
+	position: relative;
+}
+@-webkit-keyframes bounce {
+	0% {
+		top:-3px;
+	}
+	50% {
+		top:3px;
+	}
+	100% {
+		top:-3px;
+	}
+}
+@keyframes bounce {
+	0% {
+		top:-3px;
+	}
+	50% {
+		top:3px;
+	}
+	100% {
+		top:-3px;
+	}
+}
+.side {
+	list-style:none;
+	position: fixed;
+	top:40%;
+	left:1%;
+}
+.side span {
+	display:none;
+}
+.ele2 button {
+	width:40vw;
+	height:40vh;
+	background-color: rgba(128, 117, 201, 0.2);
+	outline:none;
+	border:none;
+	font-size:200px;
+	color:inherit;
+}
+.ele2 button:hover {
+	background-color: rgba(128, 117, 201, 0.9);
+}
+</style>
+<body>
+	<div class="wrapper">
+		<header>
+			<a href="index.html" onclick="return false">
+				<div class="logo"></div>
+			</a>
+			<ul class="menu">
+				<li class="constellation"><a href="#constellation" onclick="return false">별자리</a></li>
+				<li class="solarsytem"><a href="#solarsytem" onclick="return false">태양계</a</li>
+				<li class="observatory"><a href="#observatory" onclick="return false">천문대</a</li>
+				<li class="gallery"><a href="#gallery" onclick="return false">갤러리</a</li>
+				<li class="calendar"><a href="#calendar" onclick="return false">캘린더</a</li>
+				<li class="today"><a href="#today" onclick="return false">오늘의 사진</a</li>
+				<li class="quiz"><a href="#quiz" onclick="return false">퀴즈</a></li>
+			</ul>
+		</header>
+		<ul class="side">
+			<li class="item item1">
+				<i class="fas fa-user-astronaut"></i>
+				<span class="ment">Welcome</span>
+			</li>
+			<li class="item item2">
+				<i class="fas fa-handshake"></i>
+				<span>Rule</span>
+			</li>
+			<li class="item item3">
+				<i class="fa fa-gamepad" aria-hidden="true"></i>
+				<span>Game</span>
+			</li>
+			<li class="item item4">
+				<i class="fa fa-trophy" aria-hidden="true"></i>
+				<span>Result</span>
+			</li>
+		</ul>
+		<div class="main_container">
+			<div id="1" class="container page_1">
+				<div class="page_center1">
+					<h1>WELCOME TO QUIZ GAME</h1>
+					<a href="#2" class="fade-in bounce 1_a">Let's rule check!</a>
+				</div>
+			</div>
+			<div id="2" class="container page_2 none">
+				<div class="page_center2">
+					<fieldset>
+						<legend>Game Rule</legend>
+						<h2>20문제가 출제되는 OX퀴즈입니다.
+						</br>난이도는 상식문제부터 전문수준의 문제들이 랜덤으로 출제됩니다....
+						</br> 룰 보기 만들고 누르면 룰을 보여줄 예정
+
+						</h2>
+					</fieldset>
+					<a href="#3" class="fade-in bounce show">Let's Game</a>
+				</div>
+			</div>
+			<div id="3" class="container page_3 none">
+				<div class="page_center3">
+					<div class="ele1"><h1 class="problem">1. Quiz</h1></div>
+					<div class="ele2">
+						<button class="o">O
+							<!-- <img src="../images/event_img_o.png" />-->
+						</button>
+						<button class="x">X
+							<!--<img src="../images/event_img_x.png" /> -->
+						</button>
+					</div>
+					<div class="ele3"><a href="#4" class="fade-in bounce" >Let'sResult</a></div>
+				</div>
+			</div>
+			<div id="4" class="container page_4 none">
+				<div class="page_center4">
+					<h1>continue... Game result</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+/* side li  */
+// document.querySelector('.side').addEventListener('click', (e)=>{
+// 	let list = e.target.tagName
+// 	if(list === "LI"){
+// 		alert(list)
+// 		// document.querySelector('.ment').style.display = "inline"
+// 	}
+// })
+/* quiz game */
+let quizList = { 
+	"name" : [
+	{wow : "aaa", o : 1, x : 0}, 
+	{wow : "bbb", o : 0, x : 1},
+	{wow : "ccc", o : 1, x : 0}
+]}
+let o_sum = 0;
+let x_sum = 0;
+const problem = document.querySelector('.problem')
+//let obj = JSON.parse(quizList)
+//console.log(random)
+// console.log(o_sum)
+
+// document.querySelector('.ele2').addEventListener('click', (e)=>{
+// 	let target  = e.target
+// 	if(random) {
+// 			console.log(random)
+// 		if(target.className === "o" && random.o === 1){
+// 			console.log(target.className)
+// 			console.log(random.o)
+// 			console.log(o_sum++)
+// 		}else if(target.className === "x" && random.o === 0 ){
+// 			console.log(target.className)
+// 			console.log(random.x)
+// 			console.log(x_sum++)
+// 		}	
+// 	}
+// })
+
+fetch('./js/quiz.json')
+.then(res => res.json())
+.then(data =>{
+	console.log(data)
+	let random = data["list"][Math.floor(Math.random() * data["list"].length)]
+	//let random = Math.floor(Math.random() * 20)
+	//problem.innerHTML = random.problem
+	document.querySelector('.ele2').addEventListener('click',(e)=>{
+		console.log(random)
+		problem.innerHTML = random.problem
+		let target = e.target
+		if(target.className === 'o' && random.btn_o === 1) {
+			o_sum++
+			console.log('o_sum:',o_sum)
+			console.log('btn_o:',random.btn_o)
+			problem.innerHTML = random.problem
+		}else if((target.className === 'x') && (random.btn_x === 0)) {
+				x_sum++
+				console.log('x_sum:',x_sum)
+				console.log('btn_x',random.btn_x)
+		}
+	})
+
+})
+// document.querySelector('.show').addEventListener('click',()=>{
+	//fetch('./js/quiz.json')
+	//.then(res => res.blob())
+	//.then(data => {
+		// var nodeList='[{"NodeName":["Node1","Node2","Node3","Node4","Node5","Node6" ]}]';
+		// console.log(data)
+		// let obj = JSON.parse(data)
+		// console.log(obj)
+	//	alert(data.toString)
+		//document.querySelector('.problem').innerHTML = data.name
+	//})
+//		let random = quizList['name'][Math.floor(Math.random() * quizList['name'].length)]
+		
+	//document.querySelector('.problem').innerHTML = obj[0].name[1]
+	//console.log(obj[0].value[1])
+	
+// })
+</script>
+</html>
